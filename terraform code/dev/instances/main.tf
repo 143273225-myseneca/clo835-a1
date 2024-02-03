@@ -13,6 +13,9 @@ data "aws_ami" "latest_amazon_linux" {
   }
 }
 
+data "aws_iam_instance_profile" "lab_profile" {
+  name = "LabInstanceProfile"
+}
 
 # Data source for availability zones in us-east-1
 data "aws_availability_zones" "available" {
@@ -109,8 +112,4 @@ resource "aws_eip" "static_eip" {
 # ECR
 resource "aws_ecr_repository" "my_ecr" {
   name = "clo835-a1"
-}
-
-data "aws_iam_instance_profile" "lab_profile" {
-  name = "LabInstanceProfile"
 }
