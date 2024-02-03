@@ -109,7 +109,7 @@ resource "aws_eip" "static_eip" {
   )
 }
 
-# ECR
+# ECR Repo
 resource "aws_ecr_repository" "my_ecr" {
   name = "clo835-a1"
 }
