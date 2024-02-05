@@ -24,7 +24,7 @@ variable "ecr_repo" {
 }
 
 variable "sg_ports" {
-  default     = ["22","80","8080","8081", "8082","8083"]
+  default     = ["22","80","8080","8081", "8082", "8083"]
   type        = list(string)
   description = "Ports"
 }
