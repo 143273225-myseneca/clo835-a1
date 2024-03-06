@@ -15,7 +15,7 @@ jobs:
     steps:
 
     - name: Check out code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -26,17 +26,17 @@ jobs:
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         AWS_REGION: us-east-1
 
-    - name: Build, test, tag, and push image to ECR
+    - name: Build, test, tag, and push image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
 
       run: |
         
-        # MYSQL Docker Image build and push
+        # MYSQL IMAGE Docker build and push
         docker build -f Dockerfile_mysql -t $ECR_REGISTRY/clo835-a2:db .
         docker push $ECR_REGISTRY/clo835-a2:db
         
-        # APP Docker Image build and push
+        # APP IMAGE Docker build and push
         docker build -f Dockerfile -t $ECR_REGISTRY/clo835-a2:app .
         docker push $ECR_REGISTRY/clo835-a2:app
         
